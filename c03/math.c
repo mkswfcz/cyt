@@ -1,6 +1,7 @@
 #include<stdio.h>
 int main()
 {
+	int flag=1;
 	float A,B, sum;
     unsigned char a;
 	printf("请输入算式:\n");
@@ -13,9 +14,21 @@ int main()
 			else if('*'==a)
 			{sum=A*B;}
 			else if('/'==a)
-			{sum=A/B;}
+			{
+			 if(0!=B)
+				{sum=A/B;}
 			else
-			{printf("对不起！本程序只能进行简单的四则运算!\n");}
+			{
+			 flag=0;
+			 printf("表达式不合法！\n");}
+			}
+			else
+			{
+				flag=0;
+				printf("表达式不合法！\n");
+			}
+
+			if(flag)
 			printf("sum:%0.2f\n",sum);
-	return 0;
+        	return 0;
 }
